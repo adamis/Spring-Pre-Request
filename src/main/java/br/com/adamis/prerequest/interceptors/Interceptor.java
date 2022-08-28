@@ -15,8 +15,7 @@ public class Interceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    	log.info(" ----------------- Requisição iniciada ----------------- ");
-    	log.info("IP: "+request.getRemoteAddr());
+    	log.info(" ----------------- Requisição iniciada por: "+request.getRemoteAddr()+" ----------------- ");    	
         //log.info("Requisição interceptada: " + request.getHeader("Authorization"));
         return true;
     }
@@ -31,7 +30,7 @@ public class Interceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
     		throws Exception {
-    	log.info(" ----------------- Requisição Finalizada ----------------- ");
+    	log.info(" ----------------- Requisição Finalizada por: "+request.getRemoteAddr()+" ----------------- ");
     	HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }
